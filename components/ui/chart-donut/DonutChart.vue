@@ -93,12 +93,13 @@ function handleLegendItemClick(d: BulletLegendItemInterface, i: number) {
 </script>
 
 <template>
-  <div :class="cn('w-full h-48 flex flex-col items-end', $attrs.class ?? '')">
-    <!-- <ChartLegend
+  <div :class="cn('w-full h-52 flex flex-col items-end', $attrs.class ?? '')">
+    <ChartLegend
+      class="!w-full"
       v-if="showLegend"
       v-model:items="legendItems"
       @legend-item-click="handleLegendItemClick"
-    /> -->
+    />
 
     <VisSingleContainer
       :style="{ height: isMounted ? '100%' : 'auto' }"
@@ -117,7 +118,7 @@ function handleLegendItemClick(d: BulletLegendItemInterface, i: number) {
         :value="(d: Data) => d[category]"
         :sort-function="sortFunction"
         :color="colors"
-        :arc-width="type === 'donut' ? 40 : 0"
+        :arc-width="type === 'donut' ? 45 : 0"
         :show-background="false"
         :central-label="type === 'donut' ? valueFormatter(totalValue) : ''"
         :events="{

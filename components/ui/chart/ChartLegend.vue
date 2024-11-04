@@ -43,7 +43,7 @@ function onLegendItemClick(d: BulletLegendItemInterface, i: number) {
 <template>
   <div ref="elRef" class="w-max">
     <VisBulletLegend
-      :items="items"
+      :items="items" 
       :on-legend-item-click="onLegendItemClick"
     />
   </div>
