@@ -39,14 +39,14 @@ import {
       </svg>
     </CardHeader>
     <CardContent>
-      <div class="text-3xl font-bold">
+      <div class="text-4xl font-bold">
         84
       </div>
     </CardContent>
   </Card>
   <Card>
     <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
-      <CardTitle class="text-md font-medium">
+      <CardTitle class="text-lg font-medium">
         Vulnerabilidades
       </CardTitle>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
