@@ -87,18 +87,17 @@ const totalValue = computed(() =>
   }, 0)
 );
 
-function handleLegendItemClick(d: BulletLegendItemInterface, i: number) {
-  emits("legendItemClick", d, i);
-}
+// function handleLegendItemClick(d: BulletLegendItemInterface, i: number) {
+//   emits("legendItemClick", d, i);
+// }
 </script>
 
 <template>
-  <div :class="cn('w-full h-52 flex flex-col items-end', $attrs.class ?? '')">
+  <div :class="cn('w-full h-52 lg:h-[250px] flex flex-col', $attrs.class ?? '')">
     <ChartLegend
-      class="!w-full"
+      class="!w-full pl-4 pb-2 lg:pb-6 text-center"
       v-if="showLegend"
       v-model:items="legendItems"
-      @legend-item-click="handleLegendItemClick"
     />
 
     <VisSingleContainer
@@ -122,20 +121,20 @@ function handleLegendItemClick(d: BulletLegendItemInterface, i: number) {
         :show-background="false"
         :central-label="type === 'donut' ? valueFormatter(totalValue) : ''"
         :events="{
-          [Donut.selectors.segment]: {
-            click: (d: Data, ev: PointerEvent, i: number, elements: HTMLElement[]) => {
-              if (d?.data?.[index] === activeSegmentKey) {
-                activeSegmentKey = undefined
-                console.log(elements)
-                elements.forEach(el => el.style.opacity = '1')
-              }
-              else {
-                activeSegmentKey = d?.data?.[index]
-                elements.forEach(el => el.style.opacity = `${filterOpacity}`)
-                elements[i].style.opacity = '1'
-              }
-            },
-          },
+          // [Donut.selectors.segment]: {
+          //   click: (d: Data, ev: PointerEvent, i: number, elements: HTMLElement[]) => {
+          //     if (d?.data?.[index] === activeSegmentKey) {
+          //       activeSegmentKey = undefined
+          //       console.log(elements)
+          //       elements.forEach(el => el.style.opacity = '1')
+          //     }
+          //     else {
+          //       activeSegmentKey = d?.data?.[index]
+          //       elements.forEach(el => el.style.opacity = `${filterOpacity}`)
+          //       elements[i].style.opacity = '1'
+          //     }
+          //   },
+          // },
         }"
       />
 

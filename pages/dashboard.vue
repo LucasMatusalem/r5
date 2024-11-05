@@ -41,11 +41,11 @@ import UserNav from '@/components/custom/UserNav.vue'
         </h2>
       </div>
       <div class="pb-4">
-        <div class="grid gap-4 md:grid-cols-1 lg:grid-cols-3">
+        <div class="grid gap-4 grid-cols-1 lg:grid-cols-3">
           <DashboardCards></DashboardCards>
         </div>
       </div>
-      <div class="grid gap-4 md:grid-cols-1 lg:grid-cols-3">
+      <div class="grid gap-4 grid-cols-2 lg:grid-cols-3">
         <Card class="col-span-2">
           <CardHeader>
             <CardTitle>Overtime</CardTitle>
@@ -54,17 +54,17 @@ import UserNav from '@/components/custom/UserNav.vue'
             <OvertimeChart />
           </CardContent>
         </Card>
-        <Card class="col-span-1">
+        <Card class="col-span-1 min-h-[380px]">
           <CardHeader>
-            <CardTitle>Overtime</CardTitle>
+            <CardTitle>Overtime1</CardTitle>
           </CardHeader>
           <CardContent class="pl-0">
             <PieChart></PieChart>
           </CardContent>
         </Card>
-        <Card class="col-span-1">
+        <Card class="col-span-1 min-h-[380px]">
           <CardHeader>
-            <CardTitle>Overtime</CardTitle>
+            <CardTitle>Overtime2</CardTitle>
           </CardHeader>
           <CardContent class="pl-0">
             <PieChart></PieChart>
@@ -78,43 +78,6 @@ import UserNav from '@/components/custom/UserNav.vue'
             <OvertimeChart />
           </CardContent>
         </Card>
-      </div>
-
-      <div class="grid gap-4 md:grid-cols-1 lg:grid-cols-4 pt-10">
-
-        <Card class="col-span-2">
-          <CardHeader>
-            <CardTitle>PieChart</CardTitle>
-          </CardHeader>
-          <CardContent class="pl-0">
-            <PieChart></PieChart>
-          </CardContent>
-        </Card>
-        <Card class="col-span-2">
-          <CardHeader>
-            <CardTitle>PieChart</CardTitle>
-          </CardHeader>
-          <CardContent class="pl-0">
-            <PieChart></PieChart>
-          </CardContent>
-        </Card>
-        <Card class="col-span-4">
-          <CardHeader>
-            <CardTitle>Overtime</CardTitle>
-          </CardHeader>
-          <CardContent class="pl-0">
-            <OvertimeChart />
-          </CardContent>
-        </Card>
-        <Card class="col-span-4">
-          <CardHeader>
-            <CardTitle>Overtime</CardTitle>
-          </CardHeader>
-          <CardContent class="pl-0">
-            <OvertimeChart />
-          </CardContent>
-        </Card>
-
       </div>
     </div>
   </div>
