@@ -13,16 +13,17 @@ import { CalendarDate, DateFormatter, getLocalTimeZone } from '@internationalize
 import { Calendar as CalendarIcon } from 'lucide-vue-next'
 import { type Ref, ref } from 'vue'
 
-const df = new DateFormatter('en-US', {
+const df = new DateFormatter('pt-BR', {
   dateStyle: 'medium',
 })
 
-const calendarDate = new CalendarDate(2023, 0, 20)
+const calendarDate = new CalendarDate(2024, 11, 4)
 
 const value = ref({
   start: calendarDate,
   end: calendarDate.add({ days: 20 }),
-}) as Ref<DateRange>
+}) as Ref<DateRange, DateRange>;
+
 </script>
 
 <template>
@@ -49,16 +50,17 @@ const value = ref({
             </template>
           </template>
           <template v-else>
-            Pick a date
+            Selecione uma data
           </template>
         </Button>
       </PopoverTrigger>
-      <PopoverContent class="w-auto p-0" align="end">
+      <PopoverContent class="w-auto p-0" :align="'end'">
         <RangeCalendar
           v-model="value"
           weekday-format="short"
           :number-of-months="2"
           initial-focus
+          :locale="'pt-BR'"
           :placeholder="value.start"
           @update:start-value="(startDate) => value.start = startDate"
         />

@@ -10,25 +10,13 @@ import { cn } from '@/lib/utils'
       href="/dashboard"
       class="text-sm font-medium transition-colors hover:text-primary"
     >
-      Overview
+      Dashboard
     </a>
     <a
       href="/profile"
       class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
     >
-      Customers
-    </a>
-    <a
-      href="/dashboard"
-      class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-    >
-      Products
-    </a>
-    <a
-      href="/dashboard"
-      class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-    >
-      Settings
+      Analistas
     </a>
   </nav>
 </template>

@@ -6,6 +6,7 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import MainNav from '@/components/custom/MainNav.vue'
+import DateRangePicker from '@/components/custom/DateRangePicker.vue'
 
 import OvertimeChart from '@/components/custom/charts/overtime/OvertimeChart.vue'
 import DashboardCards from '@/components/dashboard/DashboardCards.vue'
@@ -47,8 +48,9 @@ import UserNav from '@/components/custom/UserNav.vue'
       </div>
       <div class="grid gap-4 grid-cols-2 lg:grid-cols-3">
         <Card class="col-span-2">
-          <CardHeader>
+          <CardHeader class="justify-between">
             <CardTitle>Overtime</CardTitle>
+            <DateRangePicker></DateRangePicker>
           </CardHeader>
           <CardContent class="pl-0">
             <OvertimeChart />
@@ -71,8 +73,9 @@ import UserNav from '@/components/custom/UserNav.vue'
           </CardContent>
         </Card>
         <Card class="col-span-2">
-          <CardHeader>
+          <CardHeader class="justify-between">
             <CardTitle>Overtime</CardTitle>
+            <DateRangePicker></DateRangePicker>
           </CardHeader>
           <CardContent class="pl-0">
             <OvertimeChart />
