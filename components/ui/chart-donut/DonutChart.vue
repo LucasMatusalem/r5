@@ -72,6 +72,7 @@ const colors = computed(() =>
         props.data.filter((d) => d[props.category]).filter(Boolean).length
       )
 );
+console.log(colors)
 
 const legendItems = ref<BulletLegendItemInterface[]>(
   props.data.map((item, i) => ({

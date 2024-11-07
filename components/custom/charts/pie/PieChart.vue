@@ -26,6 +26,6 @@ const data = [
 </script>
 
 <template>
-  <DonutChart index="name" :category="'total'" :data="data" :type="'donut'" >
+  <DonutChart index="name" :category="'total'" :data="data" :type="'donut'" :colors="['hsl(var(--chart-1))', 'hsl(var(--chart-2))','hsl(var(--chart-3))','hsl(var(--chart-4))','hsl(var(--chart-5))']" >
   </DonutChart>
 </template>

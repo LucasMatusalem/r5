@@ -664,5 +664,6 @@ const categories = Object.keys(data[0]).filter(i => i !== 'index')
     :data="data"
     index="index"
     :categories="[...(categories as any)]"
+    :colors="['hsl(var(--chart-1))', 'hsl(var(--chart-5))','hsl(var(--chart-3))','hsl(var(--chart-4))','hsl(var(--chart-2))']"
   />
 </template>

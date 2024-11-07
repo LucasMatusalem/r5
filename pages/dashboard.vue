@@ -14,6 +14,8 @@ import PieChart from '@/components/custom/charts/pie/PieChart.vue'
 
 import UserNav from '@/components/custom/UserNav.vue'
 
+import ColorMode from '@/components/custom/color-mode/ColorMode.vue';
+
 </script>
 
 <template>
@@ -30,6 +32,7 @@ import UserNav from '@/components/custom/UserNav.vue'
         <!-- <TeamSwitcher /> -->
         <MainNav class="mx-6" />
         <div class="ml-auto flex items-center space-x-4">
+          <ColorMode></ColorMode>
           <UserNav />
         </div>
       </div>
