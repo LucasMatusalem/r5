@@ -93,11 +93,11 @@ const totalValue = computed(() =>
 </script>
 
 <template>
-  <div :class="cn('w-full h-52 lg:h-[250px] flex flex-col justify-between', $attrs.class ?? '')">
+  <div :class="cn('w-full h-52 lg:h-full flex flex-col justify-around', $attrs.class ?? '')">
 
     
     <VisSingleContainer
-      :style="{ height: isMounted ? '100%' : 'auto' }"
+      :style="{ height: isMounted ? '60%' : 'auto' }"
       :margin="{ left: 20, right: 20 }"
       :data="data"
     >
@@ -139,7 +139,7 @@ const totalValue = computed(() =>
 
     
     <ChartLegend
-      class="!w-full pl-4 pb-2 lg:pb-6 text-center"
+      class="!w-full pl-4 pb-2 lg:pb-6 text-center pt-6"
       v-if="showLegend"
       v-model:items="legendItems"
     />

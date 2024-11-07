@@ -12,7 +12,6 @@ import OvertimeChart from '@/components/custom/charts/overtime/OvertimeChart.vue
 import DashboardCards from '@/components/dashboard/DashboardCards.vue'
 import PieChart from '@/components/custom/charts/pie/PieChart.vue'
 
-
 import UserNav from '@/components/custom/UserNav.vue'
 
 </script>
@@ -49,35 +48,35 @@ import UserNav from '@/components/custom/UserNav.vue'
       <div class="grid gap-4 grid-cols-2 lg:grid-cols-3">
         <Card class="col-span-2">
           <CardHeader class="justify-between">
-            <CardTitle>Overtime</CardTitle>
+            <CardTitle>Vulnerabilidades</CardTitle>
             <DateRangePicker></DateRangePicker>
           </CardHeader>
           <CardContent class="pl-0">
             <OvertimeChart />
           </CardContent>
         </Card>
-        <Card class="col-span-1 min-h-[380px]">
+        <Card class="col-span-1 min-h-[380px] flex flex-col">
           <CardHeader>
-            <CardTitle>Overtime1</CardTitle>
+            <CardTitle>Vulnerabilidades</CardTitle>
           </CardHeader>
-          <CardContent class="pl-0 p-0">
+          <CardContent class="pl-0 p-0 flex-1">
             <PieChart></PieChart>
           </CardContent>
         </Card>
-        <Card class="col-span-1 min-h-[380px]">
+        <Card class="col-span-1 min-h-[380px] flex flex-col">
           <CardHeader>
-            <CardTitle>Overtime2</CardTitle>
+            <CardTitle>Assets</CardTitle>
           </CardHeader>
-          <CardContent class="pl-0 p-0">
+          <CardContent class="pl-0 p-0 flex-1">
             <PieChart></PieChart>
           </CardContent>
         </Card>
         <Card class="col-span-2">
           <CardHeader class="justify-between">
-            <CardTitle>Overtime</CardTitle>
+            <CardTitle>Assets</CardTitle>
             <DateRangePicker></DateRangePicker>
           </CardHeader>
-          <CardContent class="pl-0">
+          <CardContent class="pl-0 h-full">
             <OvertimeChart />
           </CardContent>
         </Card>
