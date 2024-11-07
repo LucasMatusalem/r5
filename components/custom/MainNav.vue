@@ -13,10 +13,10 @@ import { cn } from '@/lib/utils'
       Dashboard
     </a>
     <a
-      href="/profile"
+      href="/vulnerabilities"
       class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
     >
-      Analistas
+      Vulnerabilidades
     </a>
   </nav>
 </template>

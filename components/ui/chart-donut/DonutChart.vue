@@ -72,7 +72,6 @@ const colors = computed(() =>
         props.data.filter((d) => d[props.category]).filter(Boolean).length
       )
 );
-console.log(colors)
 
 const legendItems = ref<BulletLegendItemInterface[]>(
   props.data.map((item, i) => ({
@@ -122,7 +121,6 @@ const totalValue = computed(() =>
           //   click: (d: Data, ev: PointerEvent, i: number, elements: HTMLElement[]) => {
           //     if (d?.data?.[index] === activeSegmentKey) {
           //       activeSegmentKey = undefined
-          //       console.log(elements)
           //       elements.forEach(el => el.style.opacity = '1')
           //     }
           //     else {

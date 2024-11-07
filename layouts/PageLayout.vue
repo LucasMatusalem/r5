@@ -1,0 +1,25 @@
+<script setup lang="ts">
+import MainNav from "@/components/custom/MainNav.vue";
+import UserNav from "@/components/custom/UserNav.vue";
+import ColorMode from "@/components/custom/color-mode/ColorMode.vue";
+</script>
+
+<template>
+  <div class="hidden flex-col md:flex">
+    <!-- Header Section -->
+    <header class="border-b">
+      <div class="flex h-16 items-center px-4">
+        <MainNav class="mx-6" />
+        <div class="ml-auto flex items-center space-x-4">
+          <ColorMode />
+          <UserNav />
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="flex-1 space-y-4 p-8 pt-6">
+      <slot />
+    </main>
+  </div>
+</template>
