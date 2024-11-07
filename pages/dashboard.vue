@@ -76,7 +76,7 @@ import UserNav from '@/components/custom/UserNav.vue'
             <CardTitle>Assets</CardTitle>
             <DateRangePicker></DateRangePicker>
           </CardHeader>
-          <CardContent class="pl-0 h-full">
+          <CardContent class="pl-0">
             <OvertimeChart />
           </CardContent>
         </Card>
