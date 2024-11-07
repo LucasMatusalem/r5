@@ -7,7 +7,7 @@ import ColorMode from "@/components/custom/color-mode/ColorMode.vue";
 <template>
   <div class="hidden flex-col md:flex">
     <!-- Header Section -->
-    <header class="border-b">
+    <header class="border-b bg-card">
       <div class="flex h-16 items-center px-4">
         <MainNav class="mx-6" />
         <div class="ml-auto flex items-center space-x-4">
@@ -18,7 +18,7 @@ import ColorMode from "@/components/custom/color-mode/ColorMode.vue";
     </header>
 
     <!-- Main Content Section -->
-    <main class="flex-1 space-y-4 p-8 pt-6">
+    <main class="flex-1 space-y-4 p-8 pt-6 bg-muted">
       <slot />
     </main>
   </div>
