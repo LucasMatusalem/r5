@@ -661,7 +661,7 @@ const data = [
 <template>
   <Card class="col-span-2">
     <CardHeader class="justify-between">
-      <CardTitle>Vulnerabilidades</CardTitle>
+      <CardTitle>Vulnerabilidades overtime</CardTitle>
       <DateRangePicker></DateRangePicker>
     </CardHeader>
     <CardContent class="pl-0">

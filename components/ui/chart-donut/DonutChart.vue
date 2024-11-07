@@ -93,7 +93,7 @@ const totalValue = computed(() =>
 </script>
 
 <template>
-  <div :class="cn('w-full h-52 lg:h-full flex flex-col justify-around', $attrs.class ?? '')">
+  <div :class="cn('w-full h-full flex flex-col justify-around', $attrs.class ?? '')">
 
     
     <VisSingleContainer
