@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { cn } from '@/lib/utils'
+import ColorMode from './color-mode/ColorMode.vue';
 </script>
 
 <template>
@@ -18,5 +19,6 @@ import { cn } from '@/lib/utils'
     >
       Analistas
     </a>
+    <ColorMode></ColorMode>
   </nav>
 </template>
