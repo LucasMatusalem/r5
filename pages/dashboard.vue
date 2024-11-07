@@ -60,7 +60,7 @@ import UserNav from '@/components/custom/UserNav.vue'
           <CardHeader>
             <CardTitle>Overtime1</CardTitle>
           </CardHeader>
-          <CardContent class="pl-0">
+          <CardContent class="pl-0 p-0">
             <PieChart></PieChart>
           </CardContent>
         </Card>
@@ -68,7 +68,7 @@ import UserNav from '@/components/custom/UserNav.vue'
           <CardHeader>
             <CardTitle>Overtime2</CardTitle>
           </CardHeader>
-          <CardContent class="pl-0">
+          <CardContent class="pl-0 p-0">
             <PieChart></PieChart>
           </CardContent>
         </Card>
