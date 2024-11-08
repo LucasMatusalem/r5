@@ -1,5 +1,17 @@
 <script setup lang="ts">
-import { cn } from '@/lib/utils'
+import { cn } from "@/lib/utils";
+import { ref, onMounted } from "vue";
+
+// Links configuration
+const links = [
+  { href: "/dashboard", label: "Dashboard" },
+  { href: "/vulnerabilities", label: "Vulnerabilidades" },
+];
+
+const currentPath = ref("");
+onMounted(() => {
+  currentPath.value = window.location.pathname;
+});
 </script>
 
 <template>
@@ -7,16 +19,16 @@ import { cn } from '@/lib/utils'
     :class="cn('flex items-center space-x-4 lg:space-x-6', $attrs.class ?? '')"
   >
     <a
-      href="/dashboard"
-      class="text-sm font-medium transition-colors hover:text-primary"
+      v-for="link in links"
+      :key="link.href"
+      :href="link.href"
+      :class="
+        cn('text-sm font-medium transition-colors hover:text-primary', {
+          'text-muted-foreground': link.href !== currentPath,
+        })
+      "
     >
-      Dashboard
-    </a>
-    <a
-      href="/vulnerabilities"
-      class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-    >
-      Vulnerabilidades
+      {{ link.label }}
     </a>
   </nav>
 </template>
