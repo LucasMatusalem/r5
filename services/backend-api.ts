@@ -25,7 +25,6 @@ export class BackendApi {
   public getDashboardTotals() {
     return useAsyncData(
       () => this.fetch<DashboardTotalsResponse>("/dashboard/totals"),
-      {}
     );
   }
 

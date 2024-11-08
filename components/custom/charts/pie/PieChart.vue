@@ -8,6 +8,7 @@ interface ChartData {
 
 interface PieChartProps {
   data: ChartData[];
+  colors: string[];
 }
 
 const props = defineProps<PieChartProps>();
@@ -19,7 +20,7 @@ const props = defineProps<PieChartProps>();
     :category="'total'"
     :data="props.data"
     :type="'donut'"
-    :colors="[
+    :colors="props.colors ?? [
       'hsl(var(--chart-1))',
       'hsl(var(--chart-5))',
       'hsl(var(--chart-3))',

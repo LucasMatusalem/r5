@@ -23,7 +23,7 @@ onMounted(() => {
       :key="link.href"
       :href="link.href"
       :class="
-        cn('text-sm font-medium transition-colors hover:text-primary', {
+        cn('text-md font-medium transition-colors hover:text-primary', {
           'text-muted-foreground': link.href !== currentPath,
         })
       "

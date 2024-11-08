@@ -3,7 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Icon } from "@iconify/vue";
 import { useColorMode } from "@vueuse/core";
 
-const colorMode = useColorMode();
+const colorMode = useColorMode({
+  initialValue: 'dark',
+});
 
 function toggleColorMode() {
   colorMode.value = colorMode.value === "light" ? "dark" : "light";

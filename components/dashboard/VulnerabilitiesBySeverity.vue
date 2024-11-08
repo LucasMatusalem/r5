@@ -7,6 +7,16 @@ const api = new BackendApi();
 const responsePieCharts = api.getDashboardPieCharts()
 const transformedData = computed(() => responsePieCharts.data.value?.vulnerabilitiesBySeverity)
 
+
+const colors = {
+  "Critical": "#FF0000",
+  "High": "#FFA500",
+  "Medium": "#FFD700",
+  "Low": "#008000",
+  "Unknown": "#0000FF",
+};
+
+const colorsArray = Object.values(colors)
 </script>
 
 <template>
@@ -16,7 +26,7 @@ const transformedData = computed(() => responsePieCharts.data.value?.vulnerabili
     </CardHeader>
     <CardContent class="pl-0 p-0 flex-1">
       <span v-if="!transformedData">Loading...</span>
-      <PieChart v-else :data="transformedData" />
+      <PieChart v-else :data="transformedData" :colors="colorsArray"/>
     </CardContent>
   </Card>
 </template>
