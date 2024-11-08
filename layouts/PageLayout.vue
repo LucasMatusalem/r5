@@ -8,7 +8,7 @@ import ColorMode from "@/components/custom/color-mode/ColorMode.vue";
   <div class="hidden flex-col md:flex">
     <!-- Header Section -->
     <header class="border-b bg-card">
-      <div class="flex h-16 items-center justify-between px-12">
+      <div class="flex h-16 items-center justify-between px-8">
         <MainNav />
         <div class="flex items-center space-x-4">
           <ColorMode />
