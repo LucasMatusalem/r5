@@ -4,12 +4,9 @@ import AssetsByType from "~/components/dashboard/AssetsByType.vue";
 import VulnerabilitiesBySeverity from "~/components/dashboard/VulnerabilitiesBySeverity.vue";
 import AssetsOvertime from "~/components/dashboard/AssetsOvertime.vue";
 import VulnerabilitiesOvertime from "~/components/dashboard/VulnerabilitiesOvertime.vue";
-import { BackendApi } from "~/services/backend-api";
 definePageMeta({
   layout: "page-layout",
 });
-
-const api = new BackendApi();
 
 </script>
 

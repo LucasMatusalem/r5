@@ -9,13 +9,14 @@ const props = defineProps<{
     title: string;
     value?: number;
   };
+  icon: keyof typeof icons;
 }>();
 
 const icons = {
   domains: DomainIcon,
   subdomains: SubdomainIcon,
   vulnerabilities: VulnerabilityIcon,
-}
+};
 </script>
 
 <template>
@@ -26,6 +27,7 @@ const icons = {
       <CardTitle class="text-lg font-medium">
         {{ props.data.title }}
       </CardTitle>
+      <component :is="icons[props.icon]" />
     </CardHeader>
     <CardContent>
       <div class="text-4xl font-bold">
