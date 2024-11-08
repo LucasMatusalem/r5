@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import DashboardCards from "@/components/dashboard/DashboardCards.vue";
 import AssetsByType from "~/components/dashboard/AssetsByType.vue";
-import VulnerabilitiesByCriticity from "~/components/dashboard/VulnerabilitiesByCriticity.vue";
+import VulnerabilitiesBySeverity from "~/components/dashboard/VulnerabilitiesBySeverity.vue";
 import AssetsOvertime from "~/components/dashboard/AssetsOvertime.vue";
 import VulnerabilitiesOvertime from "~/components/dashboard/VulnerabilitiesOvertime.vue";
+import { BackendApi } from "~/services/backend-api";
 definePageMeta({
-  layout: 'page-layout',
+  layout: "page-layout",
 });
+
+const api = new BackendApi();
+
 </script>
 
 <template>
@@ -22,8 +26,8 @@ definePageMeta({
 
   <div class="grid gap-4 grid-cols-2 lg:grid-cols-3">
     <VulnerabilitiesOvertime />
-    <VulnerabilitiesByCriticity />
-    <AssetsByType />
+    <VulnerabilitiesBySeverity />
+    <AssetsByType  />
     <AssetsOvertime />
   </div>
 </template>

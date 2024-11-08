@@ -36,6 +36,7 @@ const value = ref({
           :class="cn(
             'w-[300px] justify-start text-left font-normal',
             !value && 'text-muted-foreground',
+            'w-fit'
           )"
         >
           <CalendarIcon class="mr-2 h-4 w-4" />

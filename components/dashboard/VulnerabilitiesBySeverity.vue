@@ -5,14 +5,14 @@ import { BackendApi } from "~/services/backend-api";
 
 const api = new BackendApi();
 const responsePieCharts = api.getDashboardPieCharts()
-const transformedData = computed(() => responsePieCharts.data.value?.assetsByType)
+const transformedData = computed(() => responsePieCharts.data.value?.vulnerabilitiesBySeverity)
 
 </script>
 
 <template>
   <Card class="col-span-1 min-h-[380px] flex flex-col">
     <CardHeader>
-      <CardTitle>Quantidade de assets</CardTitle>
+      <CardTitle>Visao Geral por criticidade</CardTitle>
     </CardHeader>
     <CardContent class="pl-0 p-0 flex-1">
       <span v-if="!transformedData">Loading...</span>
