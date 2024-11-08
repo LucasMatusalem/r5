@@ -5,7 +5,7 @@ import ColorMode from "@/components/custom/color-mode/ColorMode.vue";
 </script>
 
 <template>
-  <div class="hidden flex-col md:flex">
+  <div class="flex-col flex">
     <!-- Header Section -->
     <header class="border-b bg-card">
       <div class="flex h-16 items-center justify-between px-8">
