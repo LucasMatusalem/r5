@@ -7,15 +7,13 @@ const api = new BackendApi();
 const responsePieCharts = api.getDashboardPieCharts()
 const transformedData = computed(() => responsePieCharts.data.value?.vulnerabilitiesBySeverity)
 
-
 const colors = {
-  "Critical": "#FF0000",
-  "High": "#FFA500",
-  "Medium": "#FFD700",
-  "Low": "#008000",
-  "Unknown": "#0000FF",
+  Critical: "#FF1010",
+  High: "#FF6060",
+  Medium: "#FFA500",
+  Low: "#FFD700",
+  Unknown: "#4C9AFF",
 };
-
 const colorsArray = Object.values(colors)
 </script>
 

@@ -8,7 +8,7 @@ interface ChartData {
 
 interface PieChartProps {
   data: ChartData[];
-  colors: string[];
+  colors?: string[];
 }
 
 const props = defineProps<PieChartProps>();

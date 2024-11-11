@@ -6,14 +6,14 @@ import OvertimeChart from "../custom/charts/overtime/OvertimeChart.vue";
 const data = [
   {
     index: "2023-08-10T15:10:58.000Z",
-    critical: 0,
+    critical: 100,
     high: 1,
     medium: 67,
     low: 63,
   },
   {
     index: "2023-08-10T16:00:16.000Z",
-    critical: 0,
+    critical: 10,
     high: 1,
     medium: 73,
     low: 69,
@@ -656,6 +656,24 @@ const data = [
     low: 351,
   },
 ];
+
+// const colors = {
+//   Critical: "#FF4C4C",
+//   High: "#FF7373",
+//   Medium: "#FFA500",
+//   Low: "#FFD700",
+//   Unknown: "#4C9AFF",
+// };
+
+const colors = {
+  Critical: "#FF1010",
+  High: "#FF6060",
+  Medium: "#FFA500",
+  Low: "#FFD700",
+  Unknown: "#4C9AFF",
+};
+
+const colorsArray = Object.values(colors);
 </script>
 
 <template>
@@ -665,7 +683,7 @@ const data = [
       <DateRangePicker></DateRangePicker>
     </CardHeader>
     <CardContent class="pl-0">
-      <OvertimeChart :data="data" />
+      <OvertimeChart :data="data" :colors="colorsArray" />
     </CardContent>
   </Card>
 </template>
