@@ -27,14 +27,14 @@ const value = ref({
 </script>
 
 <template>
-  <div :class="cn('grid gap-2', $attrs.class ?? '')">
+  <div :class="cn('grid gap-2 ', $attrs.class ?? '')">
     <Popover>
       <PopoverTrigger as-child>
         <Button
           id="date"
           :variant="'outline'"
           :class="cn(
-            'w-[300px] justify-start text-left font-normal',
+            'w-[300px] bg-white justify-start text-left font-normal',
             !value && 'text-muted-foreground',
             'w-fit'
           )"
