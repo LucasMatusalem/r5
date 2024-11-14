@@ -9,11 +9,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-// import ChevronLeftIcon from '~icons/radix-icons/chevron-left'
-// import ChevronRightIcon from '~icons/radix-icons/chevron-right'
+import { ChevronLeftIcon } from '@radix-icons/vue'
+import { ChevronRightIcon } from '@radix-icons/vue'
 
-// import DoubleArrowLeftIcon from '~icons/radix-icons/double-arrow-left'
-// import DoubleArrowRightIcon from '~icons/radix-icons/double-arrow-right'
+import { DoubleArrowLeftIcon } from '@radix-icons/vue'
+import { DoubleArrowRightIcon } from '@radix-icons/vue'
 
 interface DataTablePaginationProps {
   table: Table<Task>
@@ -58,7 +58,7 @@ defineProps<DataTablePaginationProps>()
           @click="table.setPageIndex(0)"
         >
           <span class="sr-only">Go to first page</span>
-          <!-- <DoubleArrowLeftIcon class="h-4 w-4" /> -->
+          <DoubleArrowLeftIcon class="h-4 w-4" />
         </Button>
         <Button
           variant="outline"
@@ -67,7 +67,7 @@ defineProps<DataTablePaginationProps>()
           @click="table.previousPage()"
         >
           <span class="sr-only">Go to previous page</span>
-          <!-- <ChevronLeftIcon class="h-4 w-4" /> -->
+          <ChevronLeftIcon class="h-4 w-4" />
         </Button>
         <Button
           variant="outline"
@@ -76,7 +76,7 @@ defineProps<DataTablePaginationProps>()
           @click="table.nextPage()"
         >
           <span class="sr-only">Go to next page</span>
-          <!-- <ChevronRightIcon class="h-4 w-4" /> -->
+          <ChevronRightIcon class="h-4 w-4" />
         </Button>
         <Button
           variant="outline"
@@ -85,7 +85,7 @@ defineProps<DataTablePaginationProps>()
           @click="table.setPageIndex(table.getPageCount() - 1)"
         >
           <span class="sr-only">Go to last page</span>
-          <!-- <DoubleArrowRightIcon class="h-4 w-4" /> -->
+          <DoubleArrowRightIcon class="h-4 w-4" />
         </Button>
       </div>
     </div>

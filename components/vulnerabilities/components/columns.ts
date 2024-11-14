@@ -10,27 +10,15 @@ import DataTableRowActions from './DataTableRowActions.vue'
 
 export const columns: ColumnDef<Task>[] = [
   {
-    id: 'select',
-    header: ({ table }) => h(Checkbox, {
-      'checked': table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && 'indeterminate'),
-      'onUpdate:checked': value => table.toggleAllPageRowsSelected(!!value),
-      'ariaLabel': 'Select all',
-      'class': 'translate-y-0.5',
-    }),
-    cell: ({ row }) => h(Checkbox, { 'checked': row.getIsSelected(), 'onUpdate:checked': value => row.toggleSelected(!!value), 'ariaLabel': 'Select row', 'class': 'translate-y-0.5' }),
-    enableSorting: false,
-    enableHiding: false,
-  },
-  {
     accessorKey: 'id',
-    header: ({ column }) => h(DataTableColumnHeader, { column, title: 'Task' }),
+    header: ({ column }) => h(DataTableColumnHeader, { column, title: 'Vulnerabilidade' }),
     cell: ({ row }) => h('div', { class: 'w-20' }, row.getValue('id')),
     enableSorting: false,
     enableHiding: false,
   },
   {
     accessorKey: 'title',
-    header: ({ column }) => h(DataTableColumnHeader, { column, title: 'Title' }),
+    header: ({ column }) => h(DataTableColumnHeader, { column, title: 'Título' }),
 
     cell: ({ row }) => {
       const label = labels.find(label => label.value === row.original.label)
@@ -43,7 +31,7 @@ export const columns: ColumnDef<Task>[] = [
   },
   {
     accessorKey: 'status',
-    header: ({ column }) => h(DataTableColumnHeader, { column, title: 'Status' }),
+    header: ({ column }) => h(DataTableColumnHeader, { column, title: 'Criticidade' }),
 
     cell: ({ row }) => {
       const status = statuses.find(
