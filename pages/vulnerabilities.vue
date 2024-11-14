@@ -17,7 +17,7 @@ definePageMeta({
   </div>
 
 
-    <Card class="p-5">
+    <Card class="p-5 border">
       <CardContent class="pl-0 p-0 flex-1">
         <DataTable :data="data" :columns="columns"></DataTable>
       </CardContent>

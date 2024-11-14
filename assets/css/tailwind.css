@@ -103,6 +103,10 @@
     /* change to any hsl value you want */
     --vis-secondary-color: 160 81% 40%;
     --vis-text-color: var(--muted-foreground);
+
+    border-color: hsl(var(--border));
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) hsl(var(--card));
   }
 
   * {
