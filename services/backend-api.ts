@@ -8,11 +8,11 @@ type PieChartData = {
   name: string;
   total: number;
 }
+
 export interface DashboardPieChartsResponse {
   "assetsByType": PieChartData[];
   "vulnerabilitiesBySeverity": PieChartData[];
 }
-
 
 export class BackendApi {
   fetch = $fetch.create({
