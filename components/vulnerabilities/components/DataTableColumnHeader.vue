@@ -6,7 +6,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { cn } from '@/lib/utils'
@@ -14,7 +13,6 @@ import { ArrowDownIcon } from '@radix-icons/vue'
 
 import { ArrowUpIcon } from '@radix-icons/vue'
 import { CaretSortIcon } from '@radix-icons/vue'
-import { EyeNoneIcon } from '@radix-icons/vue'
 
 interface DataTableColumnHeaderProps {
   column: Column<Task, any>
@@ -53,11 +51,6 @@ export default {
         <DropdownMenuItem @click="column.toggleSorting(true)">
           <ArrowDownIcon class="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
           Desc
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem @click="column.toggleVisibility(false)">
-          <EyeNoneIcon class="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
-          Hide
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

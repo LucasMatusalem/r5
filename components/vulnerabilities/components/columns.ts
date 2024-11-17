@@ -4,7 +4,7 @@ import type { Task } from '../data/schema'
 import { Badge } from '@/components/ui/badge'
 import { Checkbox } from '@/components/ui/checkbox'
 import { h } from 'vue'
-import { labels, priorities, statuses } from '../data/data'
+import { labels, criticalities, statuses } from '../data/data'
 import DataTableColumnHeader from './DataTableColumnHeader.vue'
 import DataTableRowActions from './DataTableRowActions.vue'
 
@@ -19,19 +19,10 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: 'title',
     header: ({ column }) => h(DataTableColumnHeader, { column, title: 'Título' }),
-
-    cell: ({ row }) => {
-      const label = labels.find(label => label.value === row.original.label)
-
-      return h('div', { class: 'flex space-x-2' }, [
-        label ? h(Badge, { variant: 'outline' }, () => label.label) : null,
-        h('span', { class: 'max-w-[500px] truncate font-medium' }, row.getValue('title')),
-      ])
-    },
   },
   {
     accessorKey: 'status',
-    header: ({ column }) => h(DataTableColumnHeader, { column, title: 'Criticidade' }),
+    header: ({ column }) => h(DataTableColumnHeader, { column, title: 'Status' }),
 
     cell: ({ row }) => {
       const status = statuses.find(
@@ -51,19 +42,19 @@ export const columns: ColumnDef<Task>[] = [
     },
   },
   {
-    accessorKey: 'priority',
-    header: ({ column }) => h(DataTableColumnHeader, { column, title: 'Priority' }),
+    accessorKey: 'criticality',
+    header: ({ column }) => h(DataTableColumnHeader, { column, title: 'Criticidade' }),
     cell: ({ row }) => {
-      const priority = priorities.find(
-        priority => priority.value === row.getValue('priority'),
+      const criticality = criticalities.find(
+        criticality => criticality.value === row.getValue('criticality'),
       )
 
-      if (!priority)
+      if (!criticality)
         return null
 
       return h('div', { class: 'flex items-center' }, [
-        priority.icon && h(priority.icon, { class: 'mr-2 h-4 w-4 text-muted-foreground' }),
-        h('span', {}, priority.label),
+        criticality.icon && h(criticality.icon, { class: 'mr-2 h-4 w-4 text-muted-foreground' }),
+        h('span', {}, criticality.label),
       ])
     },
     filterFn: (row, id, value) => {

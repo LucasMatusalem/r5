@@ -51,7 +51,7 @@ export const statuses = [
   },
 ]
 
-export const priorities = [
+export const criticalities = [
   {
     value: 'low',
     label: 'Low',

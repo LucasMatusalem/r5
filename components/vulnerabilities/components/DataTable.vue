@@ -50,7 +50,7 @@ const table = useVueTable({
     get columnVisibility() { return columnVisibility.value },
     get rowSelection() { return rowSelection.value },
   },
-  enableRowSelection: true,
+  enableRowSelection: false,
   onSortingChange: updaterOrValue => valueUpdater(updaterOrValue, sorting),
   onColumnFiltersChange: updaterOrValue => valueUpdater(updaterOrValue, columnFilters),
   onColumnVisibilityChange: updaterOrValue => valueUpdater(updaterOrValue, columnVisibility),
