@@ -17,7 +17,7 @@ definePageMeta({
   </div> -->
 
   <!-- MainContent -->
-  <div class="grid gap-4 grid-cols-1 lg:grid-cols-3 pb-4">
+  <div class="grid gap-4 grid-cols-1 lg:grid-cols-3">
     <DashboardCards></DashboardCards>
   </div>
 
