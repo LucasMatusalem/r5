@@ -1,17 +1,14 @@
 import type { ColumnDef } from '@tanstack/vue-table'
 import type { Task } from '../data/schema'
 
-import { Badge } from '@/components/ui/badge'
-import { Checkbox } from '@/components/ui/checkbox'
 import { h } from 'vue'
-import { labels, criticalities, statuses } from '../data/data'
+import { data } from '../data/data'
 import DataTableColumnHeader from './DataTableColumnHeader.vue'
-import DataTableRowActions from './DataTableRowActions.vue'
 
 export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: 'id',
-    header: ({ column }) => h(DataTableColumnHeader, { column, title: 'Vulnerabilidade' }),
+    header: ({ column }) => h(DataTableColumnHeader, { column, title: 'VULNID' }),
     cell: ({ row }) => h('div', { class: 'w-20' }, row.getValue('id')),
     enableSorting: false,
     enableHiding: false,
@@ -21,11 +18,35 @@ export const columns: ColumnDef<Task>[] = [
     header: ({ column }) => h(DataTableColumnHeader, { column, title: 'Título' }),
   },
   {
+    accessorKey: 'criticality',
+    header: ({ column }) => h(DataTableColumnHeader, { column, title: 'Criticidade' }),
+    cell: ({ row }) => {
+      const criticality = data.criticality.options.find(
+        criticality => criticality.value === row.getValue('criticality'),
+      )
+
+      if (!criticality)
+        return null
+
+      return h('div', { class: 'flex items-center' }, [
+        criticality.icon && h(criticality.icon, { class: 'mr-2 mt-0.5 h-4 w-4 ' + criticality.class }),
+        h('span', {}, criticality.label),
+      ])
+    },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id))
+    },
+  },
+  {
+    accessorKey: 'title',
+    header: ({ column }) => h(DataTableColumnHeader, { column, title: 'Host' }),
+  },
+  {
     accessorKey: 'status',
     header: ({ column }) => h(DataTableColumnHeader, { column, title: 'Status' }),
 
     cell: ({ row }) => {
-      const status = statuses.find(
+      const status = data.status.options.find(
         status => status.value === row.getValue('status'),
       )
 
@@ -42,27 +63,7 @@ export const columns: ColumnDef<Task>[] = [
     },
   },
   {
-    accessorKey: 'criticality',
-    header: ({ column }) => h(DataTableColumnHeader, { column, title: 'Criticidade' }),
-    cell: ({ row }) => {
-      const criticality = criticalities.find(
-        criticality => criticality.value === row.getValue('criticality'),
-      )
-
-      if (!criticality)
-        return null
-
-      return h('div', { class: 'flex items-center' }, [
-        criticality.icon && h(criticality.icon, { class: 'mr-2 h-4 w-4 text-muted-foreground' }),
-        h('span', {}, criticality.label),
-      ])
-    },
-    filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id))
-    },
-  },
-  {
-    id: 'actions',
-    cell: ({ row }) => h(DataTableRowActions, { row }),
+    accessorKey: 'title',
+    header: ({ column }) => h(DataTableColumnHeader, { column, title: 'Descrição' }),
   },
 ]

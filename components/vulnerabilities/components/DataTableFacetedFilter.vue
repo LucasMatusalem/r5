@@ -25,6 +25,7 @@ interface DataTableFacetedFilter {
     label: string
     value: string
     icon?: Component
+    class?: string
   }[]
 }
 
