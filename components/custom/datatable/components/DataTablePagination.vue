@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { Table } from '@tanstack/vue-table'
-import type { Task } from '../data/schema'
 import { Button } from '@/components/ui/button'
 import {
   Select,
@@ -16,7 +15,7 @@ import { DoubleArrowLeftIcon } from '@radix-icons/vue'
 import { DoubleArrowRightIcon } from '@radix-icons/vue'
 
 interface DataTablePaginationProps {
-  table: Table<Task>
+  table: Table<any>
 }
 defineProps<DataTablePaginationProps>()
 </script>
@@ -26,24 +25,23 @@ defineProps<DataTablePaginationProps>()
     <div class="flex items-center space-x-6 lg:space-x-8">
       <div class="flex items-center space-x-2">
         <p class="text-sm font-medium">
-          Rows per page
+          Linhas por página
         </p>
         <Select
           :model-value="`${table.getState().pagination.pageSize}`"
-          @update:model-value="table.setPageSize"
-        >
+          @update:model-value="table.setPageSize as any">
           <SelectTrigger class="h-8 w-[70px]">
             <SelectValue :placeholder="`${table.getState().pagination.pageSize}`" />
           </SelectTrigger>
           <SelectContent side="top">
-            <SelectItem v-for="pageSize in [10, 20, 30, 40, 50]" :key="pageSize" :value="`${pageSize}`">
+            <SelectItem v-for="pageSize in [5, 10, 20, 30, 40, 50]" :key="pageSize" :value="`${pageSize}`">
               {{ pageSize }}
             </SelectItem>
           </SelectContent>
         </Select>
       </div>
       <div class="flex w-[100px] items-center justify-center text-sm font-medium">
-        Page {{ table.getState().pagination.pageIndex + 1 }} of
+        {{ table.getState().pagination.pageIndex + 1 }} de
         {{ table.getPageCount() }}
       </div>
       <div class="flex items-center space-x-2">

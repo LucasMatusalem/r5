@@ -1,10 +1,112 @@
 import { CheckCircledIcon } from '@radix-icons/vue'
-import circleFull from '@/components/vulnerabilities/components/icons/circle-full.vue'
 import { CircleIcon } from '@radix-icons/vue'
 import { h } from 'vue'
+import CircleFull from '@/components/custom/datatable/components/icons/circle-full.vue'
+import type { dataSchema } from './schema'
+import type { DataCfg } from '~/components/custom/datatable/components/dataCfg'
 
-export const data = {
+export const dataCfg: DataCfg<keyof dataSchema> = {
+  id: {
+    title: "VULNID",
+    isFilter: true,
+    options: [
+      {
+        value: 'low',
+        label: 'Low',
+        icon: h(CircleFull),
+        class: 'text-yellow-500'
+      },
+      {
+        value: 'medium',
+        label: 'Medium',
+        icon: h(CircleFull),
+        class: 'text-orange-500'
+      },
+      {
+        value: 'high',
+        label: 'High',
+        icon: h(CircleFull),
+        class: 'text-red-600'
+      },
+      {
+        value: 'critical',
+        label: 'Crítico',
+        icon: h(CircleFull),
+        class: 'text-zinc-700'
+      },
+    ],
+  },
+
+  name: {
+    title: "Título",
+    isFilter: false,
+  },
+
+  severity: {
+    title: "Criticidade",
+    isFilter: true,
+    options: [
+      {
+        value: 'low',
+        label: 'Low',
+        icon: h(CircleFull),
+        class: 'text-yellow-500'
+      },
+      {
+        value: 'medium',
+        label: 'Medium',
+        icon: h(CircleFull),
+        class: 'text-orange-500'
+      },
+      {
+        value: 'high',
+        label: 'High',
+        icon: h(CircleFull),
+        class: 'text-red-600'
+      },
+      {
+        value: 'critical',
+        label: 'Crítico',
+        icon: h(CircleFull),
+        class: 'text-zinc-700'
+      },
+    ],
+  },
+
+  host: {
+    title: "Host",
+    isFilter: true,
+    options: [
+      {
+        value: 'low',
+        label: 'Low',
+        icon: h(CircleFull),
+        class: 'text-yellow-500'
+      },
+      {
+        value: 'medium',
+        label: 'Medium',
+        icon: h(CircleFull),
+        class: 'text-orange-500'
+      },
+      {
+        value: 'high',
+        label: 'High',
+        icon: h(CircleFull),
+        class: 'text-red-600'
+      },
+      {
+        value: 'critical',
+        label: 'Crítico',
+        icon: h(CircleFull),
+        class: 'text-zinc-700'
+      },
+    ],
+  },
+
   status: {
+    title: "Status",
+    isFilter: true,
     options: [
       {
         value: 'open',
@@ -17,97 +119,11 @@ export const data = {
         icon: h(CheckCircledIcon),
       },
     ],
-    title: "Status",
-    isFilter: true,
+
   },
-  criticality: {
-    options: [
-      {
-        value: 'low',
-        label: 'Low',
-        icon: h(circleFull),
-        class: 'text-yellow-500'
-      },
-      {
-        value: 'medium',
-        label: 'Medium',
-        icon: h(circleFull),
-        class: 'text-orange-500'
-      },
-      {
-        value: 'high',
-        label: 'High',
-        icon: h(circleFull),
-        class: 'text-red-600'
-      },
-      {
-        value: 'critical',
-        label: 'Crítico',
-        icon: h(circleFull),
-        class: 'text-zinc-700'
-      },
-    ],
-    title: "Criticidade",
-    isFilter: true,
-  },
-  VULID: {
-    options: [
-      {
-        value: 'low',
-        label: 'Low',
-        icon: h(circleFull),
-        class: 'text-yellow-500'
-      },
-      {
-        value: 'medium',
-        label: 'Medium',
-        icon: h(circleFull),
-        class: 'text-orange-500'
-      },
-      {
-        value: 'high',
-        label: 'High',
-        icon: h(circleFull),
-        class: 'text-red-600'
-      },
-      {
-        value: 'critical',
-        label: 'Crítico',
-        icon: h(circleFull),
-        class: 'text-zinc-700'
-      },
-    ],
-    title: "VULID",
-    isFilter: true,
-  },
-  hosts: {
-    options: [
-      {
-        value: 'low',
-        label: 'Low',
-        icon: h(circleFull),
-        class: 'text-yellow-500'
-      },
-      {
-        value: 'medium',
-        label: 'Medium',
-        icon: h(circleFull),
-        class: 'text-orange-500'
-      },
-      {
-        value: 'high',
-        label: 'High',
-        icon: h(circleFull),
-        class: 'text-red-600'
-      },
-      {
-        value: 'critical',
-        label: 'Crítico',
-        icon: h(circleFull),
-        class: 'text-zinc-700'
-      },
-    ],
-    title: "Hosts",
-    isFilter: true,
+
+  description: {
+    title: "Descrição",
+    isFilter: false,
   },
 }

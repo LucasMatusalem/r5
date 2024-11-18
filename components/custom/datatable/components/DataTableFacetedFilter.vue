@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { Column } from '@tanstack/vue-table'
 import type { Component } from 'vue'
-import type { Task } from '../data/schema'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from '@/components/ui/command'
@@ -19,7 +18,7 @@ import { PlusCircledIcon } from '@radix-icons/vue'
 import { computed } from 'vue'
 
 interface DataTableFacetedFilter {
-  column?: Column<Task, any>
+  column?: Column<any, any>
   title?: string
   options: {
     label: string
@@ -74,9 +73,7 @@ const selectedValues = computed(() => new Set(props.column?.getFilterValue() as 
       </Button>
     </PopoverTrigger>
     <PopoverContent class="w-[200px] p-0" align="start">
-      <Command
-        :filter-function="(list: DataTableFacetedFilter['options'], term) => list.filter(i => i.label.toLowerCase()?.includes(term)) "
-      >
+      <Command>
         <CommandInput :placeholder="title" />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>

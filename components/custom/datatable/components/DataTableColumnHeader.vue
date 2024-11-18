@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { Column } from '@tanstack/vue-table'
-import type { Task } from '../data/schema'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -15,7 +14,7 @@ import { ArrowUpIcon } from '@radix-icons/vue'
 import { CaretSortIcon } from '@radix-icons/vue'
 
 interface DataTableColumnHeaderProps {
-  column: Column<Task, any>
+  column: Column<any, any>
   title: string
 }
 
