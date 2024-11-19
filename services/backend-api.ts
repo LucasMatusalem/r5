@@ -52,9 +52,17 @@ export class BackendApi {
     });
   }
 
-  public getVulnerabilities() {
+  public getVulnerabilities(filter?: {
+    from?: string;
+    to?: string;
+  }) {
     return useAsyncData(async () => {
-      const data = await this.fetch<Vulnerability[]>("/vulnerabilities");
+      const data = await this.fetch<Vulnerability[]>("/vulnerabilities", {
+        query: {
+          from: filter?.from ?? undefined,
+          to: filter?.to ?? undefined,
+        }
+      });
       return data;
     });
   }

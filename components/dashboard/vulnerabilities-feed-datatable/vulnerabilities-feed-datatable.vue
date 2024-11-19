@@ -5,9 +5,7 @@ import DataTable from '~/components/custom/datatable/components/DataTable.vue';
 import { tableCfg } from './data/table-cfg';
 
 const api = new BackendApi();
-const responseVuln = api.getVulnerabilities({
-  from: new Date(new Date().setDate(new Date().getDate() - 7)).toISOString(),
-})
+const responseVuln = api.getVulnerabilities()
 const dataFromDb = computed(() => responseVuln.data.value)
 </script>
 
