@@ -15,11 +15,12 @@ export const getColumns = (data: DataCfg): ColumnDef<any, any>[] => {
         {
           const keyOptions = data[key].options;
           if (!keyOptions)
-            return h("div", { class: "w-20" }, row.getValue(key));
+            return h("div", { class: "" }, row.getValue(key));
           const option = keyOptions.find(
             (option) => option.value === row.getValue(key)
           );
-          if (!option) return h("div", { class: "w-20" }, row.getValue(key));
+
+          if (!option) return h("div", { class: "" }, row.getValue(key));
           return h("div", { class: "flex items-center" }, [
             option.icon &&
               h(option.icon, { class: "mr-2 mt-0.5 h-4 w-4 " + option.class }),

@@ -111,11 +111,11 @@ const table = useVueTable({
               <TableCell
                 v-for="cell in row.getVisibleCells()"
                 :key="cell.id"
-                class="whitespace-nowrap overflow-auto"
               >
                 <FlexRender
                   :render="cell.column.columnDef.cell"
                   :props="cell.getContext()"
+                  class="truncate max-w-[600px]"
                 />
               </TableCell>
             </TableRow>

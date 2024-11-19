@@ -10,30 +10,7 @@ export const dataCfg: DataCfg<keyof dataSchema> = {
     title: "VULNID",
     isFilter: true,
     options: [
-      {
-        value: 'low',
-        label: 'Low',
-        icon: h(CircleFull),
-        class: 'text-yellow-500'
-      },
-      {
-        value: 'medium',
-        label: 'Medium',
-        icon: h(CircleFull),
-        class: 'text-orange-500'
-      },
-      {
-        value: 'high',
-        label: 'High',
-        icon: h(CircleFull),
-        class: 'text-red-600'
-      },
-      {
-        value: 'critical',
-        label: 'Crítico',
-        icon: h(CircleFull),
-        class: 'text-zinc-700'
-      },
+      
     ],
   },
 
