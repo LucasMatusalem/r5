@@ -30,7 +30,7 @@ const data = props.tableCfg.dataCfg
         :key="key"
         :column="table.getColumn(key)"
         :title="data[key].title"
-        :options="data[key].options!"
+        :options="data[key].options"
       />
       <Button
         v-if="isFiltered"

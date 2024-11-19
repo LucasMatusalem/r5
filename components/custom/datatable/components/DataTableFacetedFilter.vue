@@ -20,7 +20,7 @@ import { computed } from 'vue'
 interface DataTableFacetedFilter {
   column?: Column<any, any>
   title?: string
-  options: {
+  options?: {
     label: string
     value: string
     icon?: Component
@@ -34,10 +34,10 @@ function getOptionsFromData() {
   const entries = data.value?.entries()
   const arr = Array.from(entries as any)
   if(arr && arr.length > 0) {
-    arr.map((key) => {
+    return arr.map((key: any) => {
       return {
-        label: key,
-        value: key,
+        label: key[0],
+        value: key[0],
         icon: undefined,
         class: undefined
       }
@@ -46,7 +46,7 @@ function getOptionsFromData() {
 }
 
 const optionsComputed = computed(() => getOptionsFromData())
-const opts = computed(() => props.options || optionsComputed.value)
+const opts = computed(() => props.options || optionsComputed.value as any)
 
 const facets = computed(() => props.column?.getFacetedUniqueValues())
 const selectedValues = computed(() => new Set(props.column?.getFilterValue() as string[]))
@@ -79,7 +79,7 @@ const selectedValues = computed(() => new Set(props.column?.getFilterValue() as 
             <template v-else>
               <Badge
                 v-for="option in opts
-                  .filter((option) => selectedValues.has(option.value))"
+                  .filter((option: any) => selectedValues.has(option.value))"
                 :key="option.value"
                 variant="secondary"
                 class="rounded-sm px-1 font-normal"

@@ -8,7 +8,7 @@ import CircleFull from '~/components/custom/datatable/components/icons/circle-fu
 export const dataCfg: DataCfg<keyof dataSchema> = {
   id: {
     title: "VULNID",
-    isFilter: true,
+    isFilter: false,
   },
 
   name: {
