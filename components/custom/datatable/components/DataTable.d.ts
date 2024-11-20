@@ -14,5 +14,6 @@ export type TableCfg<SchemaKeys = string> = {
   options: {
     showFilters: boolean,
     showPagination: boolean,
+    inputFilters: SchemaKeys[],
   }
 }

@@ -6,6 +6,8 @@ export const tableCfg: TableCfg<keyof dataSchema> = {
   dataCfg: dataCfg,
   options: {
     showFilters: false,
+    inputFilters: ["id", "name", "host"],
     showPagination: true,
   }
+
 }

@@ -1,6 +1,5 @@
 <script setup lang="ts">
   import { BackendApi } from '~/services/backend-api';
-  // make api call
   const backendApi = new BackendApi();
   const backendResponse = backendApi.getDashboardTotals();
 </script>
