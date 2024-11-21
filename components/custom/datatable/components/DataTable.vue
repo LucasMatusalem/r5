@@ -47,6 +47,8 @@ const rowSelection = ref({});
 
 const isLoading = ref(false);
 
+const emit = defineEmits(["showModal"])
+
 const table = useVueTable({
   get data() {
     return props.data;
@@ -140,6 +142,8 @@ const table = useVueTable({
               v-for="row in table.getRowModel().rows"
               :key="row.id"
               :data-state="row.getIsSelected() && 'selected'"
+              class="cursor-pointer"
+              @click="$emit('showModal', row.original.id)"
             >
               <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
                 <FlexRender

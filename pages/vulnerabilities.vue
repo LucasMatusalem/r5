@@ -6,6 +6,10 @@ import VulnerabilitiesDatatable from "~/components/vulnerabilities/vulnerabiliti
 definePageMeta({
   layout: "page-layout",
 });
+
+function showModalContent(id: any) {
+  console.log(id)
+}
 </script>
 
 <template>
@@ -17,14 +21,14 @@ definePageMeta({
   <Card class="p-5 border">
     <CardTitle class="mb-4">Vulnerabilidades</CardTitle>
     <CardContent class="pl-0 p-0 flex-1">
-      <VulnerabilitiesDatatable />
+      <VulnerabilitiesDatatable @showModal="showModalContent"/>
     </CardContent>
   </Card>
 
   <Card class="p-5 border">
     <CardTitle class="mb-4">Info</CardTitle>
     <CardContent class="pl-0 p-0 flex-1">
-      <InfoDatatable />
+      <InfoDatatable @showModal="showModalContent"/>
     </CardContent>
   </Card>
 </template>
