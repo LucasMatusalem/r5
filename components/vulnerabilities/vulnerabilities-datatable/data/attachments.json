@@ -1,0 +1,22 @@
+[
+    {
+        "id": "01934f4d-07f0-7ac3-85c8-54591489c639",
+        "createdAt": "2024-11-21T15:17:48.648Z",
+        "updatedAt": "2024-11-21T15:17:48.648Z",
+        "url": "https://example.com/attachment",
+        "name": "example.png",
+        "type": "image",
+        "vulnerabilityId": 1,
+        "userId": "01934f2d-0076-71e1-b9a8-a516c3939b79"
+    },
+    {
+        "id": "01934f4e-1578-7a53-b27d-6059b7d1498c",
+        "createdAt": "2024-11-21T15:18:57.657Z",
+        "updatedAt": "2024-11-21T15:18:57.657Z",
+        "url": "https://example.com/attachment",
+        "name": "Agencia Virtual v1.00.208.pdf",
+        "type": "application/pdf",
+        "vulnerabilityId": 1,
+        "userId": "01934f2d-0076-71e1-b9a8-a516c3939b79"
+    }
+]
