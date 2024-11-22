@@ -56,6 +56,11 @@ const table = useVueTable({
   get columns() {
     return columns;
   },
+  initialState: {
+    pagination: {
+      pageSize: props.tableCfg.options.pageSize || 10,
+    }
+  },
   state: {
     get sorting() {
       return sorting.value;

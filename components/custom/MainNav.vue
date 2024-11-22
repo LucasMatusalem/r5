@@ -6,6 +6,7 @@ import { ref, onMounted } from "vue";
 const links = [
   { href: "/dashboard", label: "Dashboard" },
   { href: "/vulnerabilities", label: "Vulnerabilidades" },
+  { href: "/subdomains", label: "Subdomínios" },
 ];
 
 const currentPath = ref("");

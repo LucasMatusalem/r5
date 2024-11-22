@@ -22,19 +22,19 @@ export const dataCfg: DataCfg<keyof dataSchema> = {
     options: [
       {
         value: 'low',
-        label: 'Low',
+        label: 'Baixo',
         icon: h(CircleFull),
         class: 'text-yellow-500'
       },
       {
         value: 'medium',
-        label: 'Medium',
+        label: 'Medio',
         icon: h(CircleFull),
         class: 'text-orange-500'
       },
       {
         value: 'high',
-        label: 'High',
+        label: 'Alto',
         icon: h(CircleFull),
         class: 'text-red-600'
       },
