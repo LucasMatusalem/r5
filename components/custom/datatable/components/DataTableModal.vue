@@ -61,7 +61,6 @@ function getIcon(type: any) {
 }
 
 function addFile(file: File) {
-  console.log(file)
   let uploadFile = {
     "id": `InputFile-${Date.now()}`,
     "name": file.name,
