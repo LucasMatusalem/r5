@@ -31,13 +31,41 @@ export interface Vulnerability {
   falsepositive: boolean;
 }
 
+export interface Company {
+  id: string;
+  name: string;
+  databaseName: string;
+}
+
 export class BackendApi {
-  fetch = $fetch.create({
+  private fetch = $fetch.create({
     baseURL: "http://localhost:8080",
     headers: {
       "Content-Type": "application/json",
     },
   });
+
+  private tenantId: string | null = null;
+
+  setTenantId(id: string) {
+    this.tenantId = id;
+  }
+
+  public getCompanies() {
+    // Mock data
+    return useAsyncData(() => Promise.resolve<Company[]>([
+      { id: "1", name: "Company One", databaseName: "company-one" },
+      { id: "2", name: "Company Two", databaseName: "company-two" },
+      { id: "3", name: "Company Three", databaseName: "company-three" },
+      { id: "4", name: "Company Four", databaseName: "company-four" },
+      { id: "5", name: "Company Five", databaseName: "company-five" },
+      { id: "6", name: "Company Six", databaseName: "company-six" },
+      { id: "7", name: "Company Seven", databaseName: "company-seven" },
+      { id: "8", name: "Company Eight", databaseName: "company-eight" },
+      { id: "9", name: "Company Nine", databaseName: "company-nine" },
+      { id: "10", name: "Company Ten", databaseName: "company-ten" },
+    ]));
+  }
 
   public getDashboardTotals() {
     return useAsyncData(
@@ -79,5 +107,28 @@ export class BackendApi {
       const data = await this.fetch<string[]>("/subdomains");
       return data;
     });
+  }
+
+  // login routes
+  public async login(username: string, password: string, otpCode?: string) {
+    const data = await this.fetch<any>("/auth/login", {
+      method: "POST",
+      body: JSON.stringify({
+        username: username,
+        password: password,
+        otpCode: otpCode,
+      }),
+    });
+    return data;
+  }
+
+  public async refreshToken(refreshToken: string) {
+    const data = await this.fetch<any>("/auth/refresh", {
+      method: "POST",
+      body: JSON.stringify({
+        refreshToken: refreshToken,
+      }),
+    });
+    return data;
   }
 }

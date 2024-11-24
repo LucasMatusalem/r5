@@ -2,16 +2,18 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: false },
-  modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    'shadcn-nuxt',
+    ['@pinia/nuxt', {
+      autoImports: ['defineStore', 'acceptHMRUpdate'],
+    }],
+  ],
+  imports: {
+    dirs: ['stores'],
+  },
   shadcn: {
-    /**
-     * Prefix for all the imported component
-     */
     prefix: '',
-    /**
-     * Directory that the component lives in.
-     * @default "./components/ui"
-     */
     componentDir: './components/ui'
   },
   experimental: {

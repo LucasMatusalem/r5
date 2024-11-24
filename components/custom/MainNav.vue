@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { cn } from "@/lib/utils";
 import { ref, onMounted } from "vue";
+import CompanySelector from "./CompanySelector.vue";
 
 // Links configuration
 const links = [
@@ -19,6 +20,7 @@ onMounted(() => {
   <nav
     :class="cn('flex items-center space-x-4 lg:space-x-6', $attrs.class ?? '')"
   >
+    <CompanySelector />
     <a
       v-for="link in links"
       :key="link.href"
