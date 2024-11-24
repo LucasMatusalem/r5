@@ -1,0 +1,26 @@
+[
+    {
+        "id": "01934f49-91c9-7430-9ff0-d10757e8f348",
+        "createdAt": "2024-11-21T15:14:01.800Z",
+        "updatedAt": "2024-11-21T15:14:01.800Z",
+        "comment": "This is a detailed comment about the vulnerability",
+        "vulnerabilityId": 1,
+        "userId": "01934f2d-0076-71e1-b9a8-a516c3939b79",
+        "user": {
+            "username": "admin",
+            "email": "admin@matusa.dev"
+        }
+    },
+    {
+        "id": "01934f49-cdd6-7a82-923a-ef8e5c493755",
+        "createdAt": "2024-11-21T15:14:17.172Z",
+        "updatedAt": "2024-11-21T15:14:17.172Z",
+        "comment": "This is the second comment",
+        "vulnerabilityId": 1,
+        "userId": "01934f2d-0076-71e1-b9a8-a516c3939b79",
+        "user": {
+            "username": "admin",
+            "email": "admin@matusa.dev"
+        }
+    }
+]
