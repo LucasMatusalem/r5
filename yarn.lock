@@ -1685,6 +1685,18 @@
   dependencies:
     "@types/geojson" "*"
 
+"@types/lodash-es@^4.17.12":
+  version "4.17.12"
+  resolved "https://registry.yarnpkg.com/@types/lodash-es/-/lodash-es-4.17.12.tgz#65f6d1e5f80539aa7cfbfc962de5def0cf4f341b"
+  integrity sha512-0NgftHUcV4v34VhXm8QBSftKVXtbkBG3ViCjs6+eJ5a6y6Mi/jiFGPc1sC7QK+9BFhWrURE3EOggmWaSxL9OzQ==
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*":
+  version "4.17.13"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.17.13.tgz#786e2d67cfd95e32862143abe7463a7f90c300eb"
+  integrity sha512-lfx+dftrEZcdBPczf9d0Qv0x+j/rfNCMuC6OcfXmO8gkfeNAY88PgKUbvG56whcN23gc27yenwF6oJZXGFpYxg==
+
 "@types/mapbox__point-geometry@*", "@types/mapbox__point-geometry@^0.1.2":
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/@types/mapbox__point-geometry/-/mapbox__point-geometry-0.1.4.tgz#0ef017b75eedce02ff6243b4189210e2e6d5e56d"
@@ -1842,10 +1854,10 @@
   dependencies:
     lodash-es "^4.17.21"
 
-"@unovis/ts@^1.5.0-beta.1":
-  version "1.5.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@unovis/ts/-/ts-1.5.0-beta.1.tgz#96e7c5d65b7e3a04cc2aa3f80150ca9dfcd3743e"
-  integrity sha512-tl4ixIoOowZXoBxJA83IP+HoAUWOwy88JmSQS1o6tHaqmuxSQ0bnch+rMLQdrJp1d+iGZrvCDo4k5Lwr60WXdw==
+"@unovis/ts@1.5.0-beta.3":
+  version "1.5.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@unovis/ts/-/ts-1.5.0-beta.3.tgz#10aab162bec1bce62182d1240bf22ae1c2021979"
+  integrity sha512-WoPWUS1hrePS1vw2PjBY5eKrI4q8ovne2hFSeTRCI3By9MlKh81TvAm3kDrBmIEDtmItUDGBB9Sytks7dHnHbg==
   dependencies:
     "@emotion/css" "^11.7.1"
     "@juggle/resize-observer" "^3.3.1"
@@ -1880,10 +1892,10 @@
     topojson-client "^3.1.0"
     tslib "^2.3.1"
 
-"@unovis/vue@^1.5.0-beta.1":
-  version "1.5.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@unovis/vue/-/vue-1.5.0-beta.1.tgz#7855c633542d0feb70d251d98f935ddcd29d9ddd"
-  integrity sha512-L+85aWS0VMy1TxP8xGrdiYeLUPMN8kXTsrTevO8AcHffXZYBFLm6WZq+kNUPJS3T+aOr38OifHTlatEtaRh4dw==
+"@unovis/vue@1.5.0-beta.3":
+  version "1.5.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@unovis/vue/-/vue-1.5.0-beta.3.tgz#c4b7860843e791ec15eceb325ec4c158240ba858"
+  integrity sha512-WAMtCITfcz4F9jezMPRBodR1Q+vegdML+SvXltoEsvBC5gqOivt2PeZUMzjW0svEYZ4F34A+FdDaTII0qNizwg==
 
 "@vercel/nft@^0.27.5":
   version "0.27.6"

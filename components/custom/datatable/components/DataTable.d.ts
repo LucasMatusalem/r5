@@ -15,5 +15,6 @@ export type TableCfg<SchemaKeys = string> = {
     showFilters: boolean,
     showPagination: boolean,
     inputFilters: SchemaKeys[],
+    pageSize?: number,
   }
 }

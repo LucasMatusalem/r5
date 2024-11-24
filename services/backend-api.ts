@@ -73,4 +73,11 @@ export class BackendApi {
       return data;
     });
   }
+
+  public getSubdomains() {
+    return useAsyncData(async () => {
+      const data = await this.fetch<string[]>("/subdomains");
+      return data;
+    });
+  }
 }

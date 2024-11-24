@@ -8,5 +8,6 @@ export const tableCfg: TableCfg<keyof dataSchema> = {
     showFilters: true,
     showPagination: true,
     inputFilters: ["id", "name", "host"],
+    pageSize: 10,
   }
 }
