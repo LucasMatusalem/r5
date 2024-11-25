@@ -4,8 +4,16 @@ export default defineNuxtRouteMiddleware(async (to) => {
   const authRequired = !publicPages.includes(to.path)
 
   if (!auth.isAuthenticated) {
-    const isValid = auth.checkAuth()
-    if (authRequired && !isValid) {
+    const token = localStorage.getItem('auth_token')
+    const refreshToken = localStorage.getItem('refresh_token')
+
+    if (token && refreshToken) {
+      try {
+        await auth.refreshLogin()
+      } catch (error) {
+        if (authRequired) return navigateTo('/login')
+      }
+    } else if (authRequired) {
       return navigateTo('/login')
     }
   }

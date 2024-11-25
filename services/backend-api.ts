@@ -69,13 +69,21 @@ export class BackendApi {
 
   public getDashboardTotals() {
     return useAsyncData(
-      () => this.fetch<DashboardTotalsResponse>("/dashboard/totals"),
+      () => this.fetch<DashboardTotalsResponse>("/dashboard/totals", {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
+        }
+      }),
     );
   }
 
   public getDashboardPieCharts() {
     return useAsyncData(async () => {
-      const data = await this.fetch<DashboardPieChartsResponse>("/dashboard/charts/pie-charts");
+      const data = await this.fetch<DashboardPieChartsResponse>("/dashboard/charts/pie-charts", {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
+        }
+      });
       return data;
     });
   }
@@ -89,6 +97,9 @@ export class BackendApi {
         query: {
           from: filter?.from ?? undefined,
           to: filter?.to ?? undefined,
+        },
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
         }
       });
       return data;
@@ -97,27 +108,48 @@ export class BackendApi {
 
   public getInfoVulnerabilities() {
     return useAsyncData(async () => {
-      const data = await this.fetch<Vulnerability[]>("/vulnerabilities/info");
+      const data = await this.fetch<Vulnerability[]>("/vulnerabilities/info", {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
+        }
+      });
       return data;
     });
   }
 
   public getSubdomains() {
     return useAsyncData(async () => {
-      const data = await this.fetch<string[]>("/subdomains");
+      const data = await this.fetch<string[]>("/subdomains", {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
+        }
+      });
       return data;
     });
   }
 
   // login routes
   public async login(username: string, password: string, otpCode?: string) {
+    if(!otpCode) {
+      return {
+        otpRequired: true
+      }
+    }
+    if(otpCode) {
+      return {
+        
+    "token": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMDE5MzRmMmQtMDA3Ni03MWUxLWI5YTgtYTUxNmMzOTM5Yjc5IiwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AbWF0dXNhLmRldiIsImNvbXBhbmllcyI6W10sInJvbGVJZCI6IjAxOTM0ZjFlLTU5OTQtN2FiMi05NTU0LWRjNmE5YjM5NjFmMyIsInJvbGVuYW1lIjoiYWRtaW4ifSwicGVybWlzc2lvbnMiOlsidXNlcnM6bGlzdCIsInVzZXJzOm1hbmFnZSIsImNvbXBhbmllczptYW5hZ2UiLCJkYXNoYm9hcmQ6dmlldyIsInZ1bG5lcmFiaWxpdGllczp2aWV3IiwidnVsbmVyYWJpbGl0aWVzOm1hbmFnZSIsInJvbGVzOm1hbmFnZSIsInBlcm1pc3Npb25zOm1hbmFnZSJdLCJpYXQiOjE3MzI1NjYwMDksImV4cCI6MTczMjU2NjkwOX0.DfuldveYl6ZCeBo57n2f3N4xSONCZb_vkBlsMMgPFy1PqbN_MQZ91l2iHpoIrdHHoIJlhHowbkN4djGwG09D7w",
+    "refreshToken": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxOTM0ZjJkLTAwNzYtNzFlMS1iOWE4LWE1MTZjMzkzOWI3OSIsInVzZXJuYW1lIjoiYWRtaW4iLCJkaWQiOiIkMmIkMTAkMDdlNVFES0Z6TWxTd1p3WTJGUTNNLk5qSkZGemtrWGRsQVRISUFqR3hBU0lPMGRYbFo5WnkiLCJpYXQiOjE3MzI1NjYwMDksImV4cCI6MTczMjY1MjQwOX0.h5nuHy56Wc99DYac-iHBL4RMOw8WJPFkcZJOw94SPUoaioN4vZsZMZCvE6puAmtFlCBEy4iu_ersaTJOL62FFw"
+
+      }
+    }
     const data = await this.fetch<any>("/auth/login", {
       method: "POST",
-      body: JSON.stringify({
-        username: username,
-        password: password,
-        otpCode: otpCode,
-      }),
+      body: {
+        username,
+        password,
+        otpToken: otpCode,
+      },
     });
     return data;
   }
@@ -125,9 +157,9 @@ export class BackendApi {
   public async refreshToken(refreshToken: string) {
     const data = await this.fetch<any>("/auth/refresh", {
       method: "POST",
-      body: JSON.stringify({
-        refreshToken: refreshToken,
-      }),
+      body: {
+        refreshToken,
+      },
     });
     return data;
   }

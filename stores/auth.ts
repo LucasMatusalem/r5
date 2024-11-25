@@ -17,17 +17,28 @@ export const useAuthStore = defineStore('auth', {
   }),
 
   actions: {
-    async login(username: string, password: string) {
+    async login(username: string, password: string, otpCode?: string) {
       try {
         const api = new BackendApi()
-        const response = await api.login(username, password) as any
-        if (response.requireOtp) {
+        const response = await api.login(username, password, otpCode)
+        
+        if ('otpRequired' in response) {
           return { requireOtp: true }
         }
-        this.setUser(response.user)
-        this.setToken(response.token)
-        this.setRefreshToken(response.refreshToken)
-        return { success: true }
+
+        if ('token' in response) {
+          this.setToken(response.token)
+          this.setRefreshToken(response.refreshToken)
+          this.setUser({
+            id: '1',
+            username,
+            email: `${username}@example.com`,
+            role: 'user'
+          })
+          return { success: true }
+        }
+
+        throw new Error('Invalid response from server')
       } catch (error: any) {
         throw new Error(error.message || 'Failed to login')
       }
@@ -54,44 +65,39 @@ export const useAuthStore = defineStore('auth', {
       this.refreshToken = null
       this.isAuthenticated = false
       localStorage.removeItem('auth_token')
-      localStorage.remove('refresh_token')
+      localStorage.removeItem('refresh_token')
       navigateTo('/login')
     },
 
     async refreshLogin() {
       try {
         const api = new BackendApi()
-        if(!this.refreshToken) {
+        const storedRefreshToken = localStorage.getItem('refresh_token')
+        
+        if(!storedRefreshToken) {
           this.logout()
           throw new Error('No refresh token')
         }
-        const response = await api.refreshToken(this.refreshToken) as any
-        this.setUser(response.user)
-        this.setToken(response.token)
-        this.setRefreshToken(response.refreshToken)
-        return { success: true }
+
+        const response = await api.refreshToken(storedRefreshToken)
+        
+        if ('token' in response) {
+          this.setToken(response.token)
+          this.setRefreshToken(response.refreshToken)
+          this.setUser({
+            id: '1',
+            username: 'user',
+            email: 'user@example.com',
+            role: 'user'
+          })
+          return { success: true }
+        }
+
+        throw new Error('Invalid response from server')
       } catch (error: any) {
         this.logout()
-        throw new Error(error.message || 'Failed to reauthenticate')
+        throw new Error(error.message || 'Failed to refresh login')
       }
-    },
-
-    async verifyOtp(username: string, password: string, optCode: string) {
-      // try {
-      //   const api = new BackendApi()
-      //   if(!this.refreshToken) {
-      //     this.logout()
-      //     throw new Error('No refresh token')
-      //   }
-      //   const response = await api.refreshToken(this.refreshToken) as any
-      //   this.setUser(response.user)
-      //   this.setToken(response.token)
-      //   this.setRefreshToken(response.refreshToken)
-      return { success: true }
-      // } catch (error: any) {
-      //   this.logout()
-      //   throw new Error(error.message || 'Failed to reauthenticate')
-      // }
     },
 
     checkAuth() {

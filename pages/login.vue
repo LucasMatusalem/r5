@@ -3,11 +3,9 @@ import { useAuthStore } from '~/stores/auth'
 import { toast } from '@/components/ui/toast'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-
-import { 
-  LoaderCircle 
-} from 'lucide-vue-next'
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card'
+import OtpInput from '@/components/custom/OtpInput.vue'
+import { LoaderCircle } from 'lucide-vue-next'
 
 const auth = useAuthStore()
 
@@ -82,7 +80,7 @@ async function handleLogin() {
     isLoading.value = true
     
     if (showOtpInput.value) {
-      const result = await auth.verifyOtp(username.value, password.value, otpCode.value)
+      const result = await auth.login(username.value, password.value, otpCode.value)
       if (result.success) {
         toast({
           title: 'Success',
@@ -124,31 +122,31 @@ async function handleLogin() {
       <CardHeader class="space-y-1">
         <CardTitle class="text-2xl">Login</CardTitle>
       </CardHeader>
-      <CardContent class="grid gap-4">
-        <div class="grid gap-2">
-          <Input
-            id="username"
-            v-model="username"
-            placeholder="Username"
-            type="text"
-            :disabled="isLoading || showOtpInput"
-            :class="{ 'border-red-500': error.errorUsername.value}"
-            @input="removeErrors"
-          />
-          <span 
-            v-if="error.errorUsername.value"
-            class="ml-1 text-red-500 text-xs"
-          >{{ error.errorUsername.message }}</span>
-        </div>
-        <div class="grid gap-2">
-          <form>
-            <div>
+      <CardContent>
+        <Transition name="slide" mode="out-in">
+          <div v-if="!showOtpInput" key="login-inputs" class="grid gap-4">
+            <div class="grid gap-2">
+              <Input
+                id="username"
+                v-model="username"
+                placeholder="Username"
+                type="text"
+                :disabled="isLoading"
+                :class="{ 'border-red-500': error.errorUsername.value}"
+                @input="removeErrors"
+              />
+              <span 
+                v-if="error.errorUsername.value"
+                class="ml-1 text-red-500 text-xs"
+              >{{ error.errorUsername.message }}</span>
+            </div>
+            <div class="grid gap-2">
               <Input
                 id="password"
                 v-model="password"
                 placeholder="Password"
                 type="password"
-                :disabled="isLoading || showOtpInput"
+                :disabled="isLoading"
                 :class="{ 'border-red-500': error.errorPassword.value}"
                 @input="removeErrors"
               />
@@ -157,17 +155,19 @@ async function handleLogin() {
                 class="ml-1 text-red-500 text-xs"
               >{{ error.errorPassword.message }}</span>
             </div>
-            <div v-if="showOtpInput" class="grid gap-2">
-              <Input
-              id="otp"
-              v-model="otpCode"
-              placeholder="Enter OTP code"
-              type="text"
-              :disabled="isLoading"
-              />
+          </div>
+          <div v-else key="otp-inputs" class="grid gap-4">
+            <div class="text-center mb-4">
+              <h3 class="text-lg font-medium">Enter OTP Code</h3>
+              <p class="text-sm text-muted-foreground">
+                Please enter the verification code
+              </p>
             </div>
-          </form>
-        </div>
+            <div class="flex justify-center">
+              <OtpInput v-model="otpCode" :length="6" />
+            </div>
+          </div>
+        </Transition>
       </CardContent>
       <CardFooter>
         <Button class="w-full" :disabled="isLoading" @click="handleLogin">
@@ -183,3 +183,20 @@ async function handleLogin() {
     </Card>
   </div>
 </template>
+
+<style scoped>
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.3s ease;
+}
+
+.slide-enter-from {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+</style>
