@@ -1,31 +1,87 @@
 <script setup lang="ts">
 import { useAuthStore } from '~/stores/auth'
-import { useToast } from '@/components/ui/toast/use-toast'
+import { toast } from '@/components/ui/toast'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+
+import { 
+  LoaderCircle 
+} from 'lucide-vue-next'
 
 const auth = useAuthStore()
-const { toast } = useToast()
 
 const username = ref('')
 const password = ref('')
 const otpCode = ref('')
-const loading = ref(false)
+const isLoading = ref(false)
 const showOtpInput = ref(false)
+const error = reactive({
+  errorUsername: {
+    value: false,
+    message: ''
+  },
+  errorPassword: {
+    value: false,
+    message: ''
+  }
+})
+
+function validateUsername() {
+  if (username.value === '') {
+    error.errorUsername.value = true
+    error.errorUsername.message = 'Nome de usuário inválido'
+    return false
+  }
+
+  const usernameRegex = /^(?=.*[a-z\d])[a-z\d_]{4,30}$/
+  if (!usernameRegex.test(username.value)) {
+    error.errorUsername.value = true
+    error.errorUsername.message = 'Nome de usuário ou e-mail inválidos'
+    return false
+  }
+
+  return true
+}
+
+function validatePassword() {
+  if (password.value.length < 6) {
+    error.errorPassword.value = true
+    error.errorPassword.message = 'Senha deve ter, no mínimo, 6 caracteres'
+    return false
+  }
+  return true
+}
+
+function validateInputs() {
+  const validLogin = validateUsername()
+  const validPassword = validatePassword()
+  
+  if (validPassword && validLogin) return true
+
+  console.log('false')
+  return false
+}
+
+function removeErrors() {
+  error.errorUsername.value = false
+  error.errorUsername.message = ''
+  
+  error.errorPassword.value = false
+  error.errorPassword.message = ''
+}
 
 async function handleLogin() {
-  if (!username.value || !password.value) {
+  if (!validateInputs()) {
     toast({
       title: 'Error',
-      description: 'Please fill in all fields',
-      variant: 'destructive',
+      description: 'Please fill in all fields'
     })
     return
   }
 
   try {
-    loading.value = true
+    isLoading.value = true
     
     if (showOtpInput.value) {
       const result = await auth.verifyOtp(username.value, password.value, otpCode.value)
@@ -59,7 +115,7 @@ async function handleLogin() {
       variant: 'destructive',
     })
   } finally {
-    loading.value = false
+    isLoading.value = false
   }
 }
 </script>
@@ -69,9 +125,6 @@ async function handleLogin() {
     <Card class="w-[350px]">
       <CardHeader class="space-y-1">
         <CardTitle class="text-2xl">Login</CardTitle>
-        <CardDescription>
-          Enter your credentials to access your account
-        </CardDescription>
       </CardHeader>
       <CardContent class="grid gap-4">
         <div class="grid gap-2">
@@ -80,32 +133,48 @@ async function handleLogin() {
             v-model="username"
             placeholder="Username"
             type="text"
-            :disabled="loading || showOtpInput"
+            :disabled="isLoading || showOtpInput"
+            :class="{ 'border-red-500': error.errorUsername.value}"
+            @input="removeErrors"
           />
+          <span 
+            v-if="error.errorUsername.value"
+            class="ml-1 text-red-500 text-xs"
+          >{{ error.errorUsername.message }}</span>
         </div>
         <div class="grid gap-2">
-          <Input
-            id="password"
-            v-model="password"
-            placeholder="Password"
-            type="password"
-            :disabled="loading || showOtpInput"
-          />
-        </div>
-        <div v-if="showOtpInput" class="grid gap-2">
-          <Input
-            id="otp"
-            v-model="otpCode"
-            placeholder="Enter OTP code"
-            type="text"
-            :disabled="loading"
-          />
+          <form>
+            <div>
+              <Input
+                id="password"
+                v-model="password"
+                placeholder="Password"
+                type="password"
+                :disabled="isLoading || showOtpInput"
+                :class="{ 'border-red-500': error.errorPassword.value}"
+                @input="removeErrors"
+              />
+              <span 
+                v-if="error.errorPassword.value"
+                class="ml-1 text-red-500 text-xs"
+              >{{ error.errorPassword.message }}</span>
+            </div>
+            <div v-if="showOtpInput" class="grid gap-2">
+              <Input
+              id="otp"
+              v-model="otpCode"
+              placeholder="Enter OTP code"
+              type="text"
+              :disabled="isLoading"
+              />
+            </div>
+          </form>
         </div>
       </CardContent>
       <CardFooter>
-        <Button class="w-full" :disabled="loading" @click="handleLogin">
-          <template v-if="loading">
-            <Icon icon="lucide:loader-2" class="mr-2 h-4 w-4 animate-spin" />
+        <Button class="w-full" :disabled="isLoading" @click="handleLogin">
+          <template v-if="isLoading">
+            <LoaderCircle class="mr-2 h-4 w-4 animate-spin" />
             Please wait
           </template>
           <template v-else>

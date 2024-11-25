@@ -76,6 +76,24 @@ export const useAuthStore = defineStore('auth', {
       }
     },
 
+    async verifyOtp(username: string, password: string, optCode: string) {
+      // try {
+      //   const api = new BackendApi()
+      //   if(!this.refreshToken) {
+      //     this.logout()
+      //     throw new Error('No refresh token')
+      //   }
+      //   const response = await api.refreshToken(this.refreshToken) as any
+      //   this.setUser(response.user)
+      //   this.setToken(response.token)
+      //   this.setRefreshToken(response.refreshToken)
+      return { success: true }
+      // } catch (error: any) {
+      //   this.logout()
+      //   throw new Error(error.message || 'Failed to reauthenticate')
+      // }
+    },
+
     checkAuth() {
       return this.isAuthenticated
     }
