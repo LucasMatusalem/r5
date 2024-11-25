@@ -58,8 +58,6 @@ function validateInputs() {
   const validPassword = validatePassword()
   
   if (validPassword && validLogin) return true
-
-  console.log('false')
   return false
 }
 
